@@ -17,6 +17,7 @@ class Settings extends Model
     public $listId = '';
     public $audienceId = '';
     public $doubleOptIn = true;
+    public $clientOptions = [];
 
     public function getApiKey($siteHandle = null) {
         return ConfigHelper::localizedValue($this->apiKey, $siteHandle);
@@ -28,5 +29,9 @@ class Settings extends Model
 
     public function getDoubleOptIn($siteHandle = null) {
         return ConfigHelper::localizedValue($this->doubleOptIn, $siteHandle);
+    }
+
+    public function getClientOptions() {
+        return $this->clientOptions;
     }
 }

@@ -697,7 +697,9 @@ class MailchimpSubscribeService extends Component
     private function getClient(): Mailchimp
     {
         $settings = Plugin::$plugin->getSettings();
-        return new Mailchimp(Craft::parseEnv($settings->getApiKey()));
+        $apiKey = Craft::parseEnv($settings->getApiKey());
+        $clientOptions = $settings->getClientOptions();
+        return new Mailchimp($apiKey, $clientOptions);
     }
 
     /**
